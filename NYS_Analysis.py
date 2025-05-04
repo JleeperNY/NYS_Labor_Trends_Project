@@ -26,6 +26,6 @@ shape_names = set(GeoData['Area Name'].unique())
 missing_in_shapes = csv_names - shape_names
 print(f"Area Names in CSV but missing in my_shapes.gpkg:, {missing_in_shapes}")
 #__________________________________________________________________________________________
-#Data Analysis Sample
+#Analysis Sample
 df_result = apa.sector_pct_change(1998, 2006, data, ["Manufacturing", "Construction"], False, "Rochester Metro Area", True)
-
+print(apa.list_sectors(data, filterby="Manu"))

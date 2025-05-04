@@ -221,4 +221,11 @@ def sector_pct_change(year1:int, year2:int, data:pd.DataFrame, sectors: list[str
         if to_DataFrame:
                 print(f"\nDataFrame returned with {len(df_out)} rows.")
                 return df_out
-                
+
+def list_sectors(data: pd.DataFrame, filterby: str = None, startswith: str = None) -> list[str]:
+    sectors = data["Title"].dropna().unique().tolist()
+    if filterby:
+        sectors = [s for s in sectors if filterby.lower() in s.lower()]
+    if startswith:
+        sectors = [s for s in sectors if s.lower().startswith(startswith.lower())]
+    return sorted(sectors)
